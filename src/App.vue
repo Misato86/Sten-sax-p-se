@@ -1,33 +1,12 @@
 <script setup>
 import { ref } from 'vue';
+import Knapprad from './components/icons/KnappRad.vue';
 
+const knappar = ref(['Sten', 'Sax', 'Påse', "SPOCK", "Lizard"]);
 const score = ref({spelare: 0, dator: 0});
 const resultat = ref('Du vann!');
 
-  function spelarval(e) {
-    let buttons = document.getElementsByClassName('alternativ')
-    for (let b of buttons) {
-       b.classList.remove('spelarval')
-    }
-    e.target.classList.add('spelarval')
-    datorval()
-    hittaVinnare()
-  }
 
-  function datorval() {
-    let val = Math.floor(Math.random() * 3);
-    let alternativ = ['Sten', 'Sax', 'Påse'];
-    let buttons = document.getElementsByClassName('alternativ')
-    for (let b of buttons) {
-       b.classList.remove('datorval')
-       b.title=""
-       if(b.textContent === alternativ[val]) {
-          b.classList.add('datorval')
-          b.title="Datorns val"
-       }
-    }
-
-  }
 
 function hittaVinnare() {
     let buttons = document.getElementsByClassName('alternativ')
@@ -72,12 +51,7 @@ function reset() {
   </header>
 
   <main>
-  
-    <div class="knapprad">
-      <button class="alternativ" @click="spelarval">Sten</button>
-      <button class="alternativ" @click="spelarval">Sax</button>
-      <button class="alternativ" @click="spelarval">Påse</button>
-    </div>
+    <knapprad :knappar = "knappar" />
 
     <div class="resultat">
       <p id="resultat">{{ resultat }}</p>
@@ -98,19 +72,6 @@ function reset() {
     text-align: center;
     margin-bottom: 1,2em;
   }
-  button {
-     padding: .6em 1.2em;
-      font-size: 1.2em;
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      cursor: pointer;
-  }
-  .knapprad {
-    display: flex;
-    justify-content: center;
-    gap: .6em;
-  }
   .resultat {
     text-align: center;
     font-size: 1.2em;
@@ -120,12 +81,6 @@ function reset() {
     text-align: center;
     font-size: 1.2em;
 
-  }
-  button.spelarval {
-    background-color: lightgreen;
-  }
-  button.datorval {
-    border: red solid 2px;
   }
   #nolla {
     margin.top: 2em;
