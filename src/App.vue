@@ -4,7 +4,7 @@ import Knapprad from './components/icons/KnappRad.vue';
 import ResultatRad from './components/ResultatRad.vue';
 import PoangRad from './components/PoangRad.vue';
 
-const knappar = ref(['Sten', 'Sax', 'Påse']);
+const knappar = ref(['Sten', 'Sax', 'Påse', 'Lizard', 'Spock']);
 const score = ref({spelare: 0, dator: 0});
 const resultat = ref({});
 const vinnare = ref('');
@@ -71,6 +71,8 @@ function raknaPoang(v) {
 
   }
   #nolla {
+    margin: auto;
+    display: block;
     margin-top: 2em;
     padding: .3em .6em;
     font-size: .8em;
