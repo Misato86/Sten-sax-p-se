@@ -8,6 +8,7 @@ const knappar = ref(['Sten', 'Sax', 'Påse']);
 const score = ref({spelare: 0, dator: 0});
 const resultat = ref({});
 const vinnare = ref('');
+const reset = ref(true);
 
 function hittaVinnare(valdaKnappar) {
   vinnare.value = ''
@@ -27,7 +28,8 @@ function raknaPoang(v) {
   vinnare.value = v
 }
 
-function reset() {
+
+/*function reset() {
   score.value.spelare = 0
   score.value.dator = 0
   let buttons = document.getElementsByClassName('alternativ')
@@ -36,6 +38,7 @@ function reset() {
        b.classList.remove('datorval')
     }
 }
+    */
 </script>
 
 <template>
@@ -49,7 +52,7 @@ function reset() {
 
     <ResultatRad :valdaKnappar="resultat" @vinnare="raknaPoang"/>
 
-    <PoangRad :vinnare="vinnare"/>
+    <PoangRad :vinnare="vinnare" :reset="reset"/>
 
   </main>
 </template>
