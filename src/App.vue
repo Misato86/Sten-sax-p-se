@@ -11,6 +11,7 @@ const vinnare = ref('');
 const reset = ref(true);
 
 function hittaVinnare(valdaKnappar) {
+  reset.value = false;
   vinnare.value = ''
   let spelare = knappar.value.indexOf(valdaKnappar.spelare)
   let dator = knappar.value.indexOf(valdaKnappar.dator)
@@ -50,9 +51,11 @@ function raknaPoang(v) {
   <main>
     <knapprad :knappar="knappar" @valda-knappar="hittaVinnare"/>
 
-    <ResultatRad :valdaKnappar="resultat" @vinnare="raknaPoang"/>
+    <ResultatRad :valdaKnappar="resultat" @vinnare="raknaPoang" :reset="reset"/>
 
     <PoangRad :vinnare="vinnare" :reset="reset"/>
+
+    <button id="nolla" @click="reset = true">Nollställ poäng</button>
 
   </main>
 </template>
