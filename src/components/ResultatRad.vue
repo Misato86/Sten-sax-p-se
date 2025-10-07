@@ -17,8 +17,7 @@ watch(props, () => {
         resultat.value = "Datorn vann!"
         emit('vinnare', 'dator')
       }
-    } else {
-      // Olika paritet - Lägsta talet vinner
+    } else { // Olika paritet - Lägsta talet vinner
       if (props.valdaKnappar.spelare < props.valdaKnappar.dator) {
         resultat.value = "Du vann!"
         emit('vinnare', 'spelare')
